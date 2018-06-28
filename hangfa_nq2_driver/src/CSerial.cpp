@@ -1,16 +1,13 @@
 #include "RobotStruct.h"
 #include "CSerial.h"
 
+CSerial::CSerial() {
 
-CSerial::CSerial()
-{
 }
 
-CSerial::~CSerial()
-{
+CSerial::~CSerial() {
+
 }
-
-
 
 bool CSerial::m_CheckDataSum(byte * data, const int data_L, const byte checksum)
 {
