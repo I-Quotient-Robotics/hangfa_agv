@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<robot name="iqr_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Include accessories -->
+  <xacro:include filename="$(find hangfa_nq2_description)/urdf/hangfa_nq2_robot.urdf.xacro" />
+
+  <!-- hangfa NQ2 -->
+  <xacro:hangfa_nq2 />
+</robot>

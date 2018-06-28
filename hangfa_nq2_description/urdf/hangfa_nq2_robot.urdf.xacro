@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+
+<robot name="hangfa_nq2" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="hangfa_nq2">
+    <!-- footprint -->
+    <link name="base_footprint"/>
+
+    <!-- NQ2 -->
+    <link name="base_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://hangfa_nq2_description/meshes/navigator_q2.stl" />
+        </geometry>
+        <!-- TODO: change color -->
+        <material name="blue">
+          <color rgba="0.3 0.9 1.0 1.0" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://hangfa_nq2_description/meshes/navigator_q2.stl" />
+        </geometry>
+      </collision>
+      <!-- TODO: add inertial -->
+    </link>
+
+    <joint name="base_joint" type="fixed">
+      <origin xyz="0 0 0.2598" rpy="0 0 0" />
+      <parent link="base_footprint"/>
+      <child link="base_link" />
+    </joint>
+
+    <!-- wheels -->
+    <!-- TODO -->
+  </xacro:macro>
+</robot>
