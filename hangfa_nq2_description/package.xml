@@ -16,10 +16,10 @@
 
   <build_depend>roslaunch</build_depend>
 
-  <run_depend>urdf</run_depend>
-  <run_depend>xacro</run_depend>
-  <run_depend>joint_state_publisher</run_depend>
-  <run_depend>robot_state_publisher</run_depend>
+  <exec_depend>urdf</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
 
   <export>
   </export>
