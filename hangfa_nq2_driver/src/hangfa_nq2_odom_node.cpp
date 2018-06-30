@@ -47,15 +47,18 @@ odom_node::odom_node() {
   std::vector<double> twist_cov_diag(6, 1e-6);
 
   m_nh = new ros::NodeHandle("~");
-  m_nh->param<std::string>("~odom_port", odom_port, "/dev/ttyACM0");
-  m_nh->param<std::string>("~odom_id", odom_id, "odom");
-  m_nh->param<std::string>("~child_id", child_id, "base_link");
-  m_nh->param<int>("~pub_rate", pub_rate, 30);
-  m_nh->param<bool>("~tf_publish_flag", odom_tf_publish_flag, true);
+  // m_nh->getParam("my_private_name");
+  m_nh->param<std::string>("odom_port", odom_port, "/dev/ttyACM0");
+  m_nh->param<std::string>("odom_id", odom_id, "odom");
+  m_nh->param<std::string>("child_id", child_id, "base_link");
+  m_nh->param<int>("pub_rate", pub_rate, 30);
+  m_nh->param<bool>("tf_publish_flag", odom_tf_publish_flag, true);
 
-  if (m_nh->hasParam("~pose_covariance_diagonal")) {
+  std::cout << "bb" << odom_port << std::endl;
+
+  if (m_nh->hasParam("pose_covariance_diagonal")) {
     XmlRpc::XmlRpcValue pose_cov_list;
-    m_nh->getParam("~pose_covariance_diagonal", pose_cov_list);
+    m_nh->getParam("pose_covariance_diagonal", pose_cov_list);
     ROS_ASSERT(pose_cov_list.getType() == XmlRpc::XmlRpcValue::TypeArray);
     ROS_ASSERT(pose_cov_list.size() == 6);
     for (int i = 0; i < pose_cov_list.size(); ++i) {
@@ -69,9 +72,9 @@ odom_node::odom_node() {
     ROS_WARN("Pose covariance diagonals not specified for odometry integration. Defaulting to 1e-6.");
   }
 
-  if (m_nh->hasParam("~twist_covariance_diagonal")) {
+  if (m_nh->hasParam("twist_covariance_diagonal")) {
     XmlRpc::XmlRpcValue twist_cov_list;
-    m_nh->getParam("~twist_covariance_diagonal", twist_cov_list);
+    m_nh->getParam("twist_covariance_diagonal", twist_cov_list);
     ROS_ASSERT(twist_cov_list.getType() == XmlRpc::XmlRpcValue::TypeArray);
     ROS_ASSERT(twist_cov_list.size() == 6);
     for (int i = 0; i < twist_cov_list.size(); ++i) {
