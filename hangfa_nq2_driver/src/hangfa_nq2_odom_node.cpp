@@ -48,7 +48,7 @@ odom_node::odom_node() {
 
   m_nh = new ros::NodeHandle("~");
   // m_nh->getParam("my_private_name");
-  m_nh->param<std::string>("odom_port", odom_port, "/dev/ttyACM0");
+  m_nh->param<std::string>("odom_port", odom_port, "/dev/nqodom");
   m_nh->param<std::string>("odom_id", odom_id, "odom");
   m_nh->param<std::string>("child_id", child_id, "base_link");
   m_nh->param<int>("pub_rate", pub_rate, 30);

@@ -60,7 +60,7 @@ class Q2ROS_Driver(object):
 
         self.timeout = rospy.get_param("~timeout", 0.5)
         self.baud = int(rospy.get_param("~baud", 115200))
-        self.port = rospy.get_param("~driver_port", "/dev/ttyUSB0")
+        self.port = rospy.get_param("~driver_port", "/dev/nqdriver")
         #self.base_frame = rospy.get_param("~base_frame", 'base_link')
         try:
             self.ser = serial.Serial(self.port, self.baud, timeout=self.timeout)
